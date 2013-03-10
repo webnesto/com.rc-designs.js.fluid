@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<title>test</title>
+		<style type="text/css">
+			.box {
+				border: 1px black solid;
+				position: absolute;
+			}
+			
+			.box0 { background-color: brown }
+			.box1 { background-color: red }
+			.box2 { background-color: orange }
+			.box3 { background-color: yellow }
+			.box4 { background-color: purple }
+			.box5 { background-color: blue }
+			.box6 { background-color: green }
+			.box7 { background-color: gray }
+			.box8 { background-color: black }
+			.box9 { background-color: white }
+		</style>
+		<script src="lib/js/jquery-1.4.2.js"></script>
+		<script src="js/fluidbox.js"></script>
+		<script src="js/fluidlayout.js"></script>
+		<script>
+		
+			var Page = (function () {
+				var _this = this
+					, _fbox = fluid.Box
+					, _divCount = 0
+					, _boxes = []
+				;
+				
+				function _makeDiv (lastDiv) {
+					var _id = "box" + _divCount
+						, _ref = (lastDiv) ? "#"+lastDiv : null
+						, _top = function() { return _fbox.calculate("5%", "height") }
+						, _left = function() { return _fbox.calculate("5%", "height") }
+						, _classNum = (_divCount > 9) ? _divCount % 9 : _divCount;
+					;
+					$("body").append('<div id="'+ _id +'" class="box box'+_classNum+'"></div>');
+					if(_ref) {
+						_top = function() { return $(_ref).offset().top + _fbox.calculate("8% - ("+_divCount+" * -8)", "height"); }
+						_left = function() { return $(_ref).offset().left + _fbox.calculate("10% - ("+_divCount+" * -8)", "width"); }
+					}
+					_boxes.push(
+						new _fbox(
+							"#"+_id,
+							{
+								reference: _ref
+								, height: "90% - ("+_divCount+" * .5)"
+								, width: "90% - ("+_divCount+" * .5)"
+								, top: _top
+								, left: _left
+							}
+						)
+					);
+					
+					
+					_divCount++;
+					return _id;
+				}
+				
+				function _makeDivs () {
+					
+					var _last = _makeDiv()
+					for(var i=0; i<20; i++){
+						_last = _makeDiv(_last);
+					}
+				}
+				
+				_this.makeDivs = _makeDivs;
+				
+				_this.tests = function() {
+					
+				}
+				
+				return _this;
+			})();
+			
+			
+			$(document).ready(function () {
+				$("body").append("<p>test</p>");
+				Page.makeDivs();
+				Page.tests();
+			});
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

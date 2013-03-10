@@ -1,0 +1,111 @@
+<html>
+	<head>
+		<title>test</title>
+		<style type="text/css">
+			body {
+			}
+			.box {
+					border: 1px black solid;
+				margin: 0 0 20px 0;
+			}
+			
+			#box1, #box2, #box3{
+				position: absolute;
+			}
+			#box1 { background-color: red }
+			#box2 { background-color: orange }
+			#box3 { background-color: yellow }
+			
+			#box4 { background-color: purple }
+			#box5 { background-color: blue }
+			#box6 { background-color: green }
+			
+			#box7 { background-color: gray }
+			#box8 { background-color: black }
+			#box9 { background-color: white }
+		</style>
+		<script src="lib/js/jquery-1.4.2.js"></script>
+		<script src="js/fluidbox.js"></script>
+		<script src="js/fluidlayout.js"></script>
+		<script>
+		
+			var Page = (function () {
+				var _this = this
+				;
+				
+				var _box1 = new fluid.Box (
+							'#box1'
+						, { 
+								height: function(){ return fluid.Box.calculate("100%", "height", "#box2"); }
+							, width: "33% - 20px"
+							, top: "50% - ((33% - 20px) / 2)"
+							, left: "20px"	
+						}
+					)
+					,_box2 = new fluid.Box (
+							'#box2'
+						, { 
+								//height: "33% - 20px"
+							//, 
+							width: "33% - 20px"
+							, top: "50% - ((33% - 20px) / 2)"
+							, left: "50% - ((33% - 20px) / 2)"	
+						}
+					)
+					,  _box3 = new fluid.Box (
+							'#box3'
+						, { 
+								height: function(){ return fluid.Box.calculate("100%", "height", "#box2") }
+							, width: "33% - 20px"
+							, top: "50% - ((33% - 20px) / 2)"
+							, right: "20px"	
+						}
+					)
+				;
+				
+				_this.tests = function() {
+					// Tests should not be library dependent wherever possible
+					// If not possible, library requirement for test should be readily apparent (either as a result of commenting or code syntax (e.q. the jQuery library is used in the namespace "jQuery"))
+				}
+				
+				_this.boxes = [
+						_box1
+					, _box2
+					, _box3
+				]
+				
+				return _this;
+			})();
+			
+			
+			$(document).ready(function () {
+				Page.tests();
+			});
+		</script>
+	</head>
+	<body>
+		<div id="box1" class="box">
+			askdfjalsdkjf
+		</div>
+		<div id="box2" class="box">
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras hendrerit auctor tellus eu ornare. Etiam consectetur malesuada feugiat. Nam est quam, condimentum volutpat dictum non, varius a ante. Phasellus elit sem, laoreet ac congue sed, facilisis vitae nibh. Aliquam ullamcorper est sit amet orci hendrerit et convallis massa placerat. Mauris ut libero mauris. Donec lorem ligula, scelerisque quis dignissim et, dapibus vel magna. Etiam ac purus lectus, eu viverra purus. In hac habitasse platea dictumst. Sed et consequat velit. Morbi quis neque nec dui venenatis iaculis. Cras placerat pretium dolor, eget fringilla mauris malesuada a. Curabitur sit amet pellentesque erat. Nunc viverra, urna sed mattis suscipit, libero ante scelerisque metus, eget congue felis ipsum non nisi. Morbi sit amet mattis orci.
+			</p>
+			<p>
+			Nullam a justo ac leo tristique suscipit id sed neque. Nunc diam leo, facilisis sit amet tristique quis, ultricies eu nisi. Curabitur fermentum lorem non nisl luctus at lobortis metus cursus. Ut et egestas turpis. In in sapien sem, vitae faucibus augue. Fusce quis justo orci, vitae vehicula quam. Aenean varius convallis ipsum, at molestie augue varius sit amet. Etiam tincidunt sagittis arcu at pulvinar. Suspendisse rutrum convallis ante non semper. Maecenas in enim eget velit rhoncus aliquet. Donec venenatis ligula id diam euismod vestibulum. Nunc eget lorem purus, ac cursus ipsum. Maecenas eget turpis nisl, eu ultricies purus. Nullam placerat, enim ac mollis tristique, tellus nunc venenatis nibh, sed aliquam nulla nisl cursus purus. Integer condimentum aliquam lorem, nec sollicitudin quam tempor ut. Nam tincidunt malesuada tellus, a sollicitudin ipsum tristique eget. Suspendisse a metus nunc, at fringilla enim. Maecenas vitae sodales nisl. Nunc porta imperdiet iaculis. Pellentesque a augue sem, vitae fringilla libero.
+			</p>
+			<p>
+			Pellentesque congue nulla ac odio eleifend faucibus. Nunc hendrerit congue odio, at lobortis ipsum porta in. Etiam diam urna, convallis a bibendum eget, posuere at nulla. Fusce placerat vulputate leo, vitae vehicula orci consequat facilisis. Integer sollicitudin leo quis tellus volutpat vehicula. Sed sit amet sem nibh. Praesent a est sed nunc molestie feugiat. Nulla eu placerat mi. Nulla vel diam at tellus dignissim ullamcorper. Curabitur bibendum laoreet congue. Sed sed arcu id nisi feugiat tristique. Proin nec condimentum est. Vivamus vel nulla enim. Sed vehicula ullamcorper leo in ornare. Nam et mauris diam, vitae pellentesque mi. Sed faucibus elit quis dui sagittis pellentesque eleifend nisl porttitor. Proin elementum aliquet nibh sit amet varius. Vivamus volutpat eleifend nulla ac condimentum.
+			</p>
+			<p>
+			Vivamus tempus accumsan nibh, consectetur viverra tortor volutpat ut. In a elit tortor. Nullam malesuada pulvinar luctus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi sed rhoncus risus. Etiam imperdiet dui eu justo tristique volutpat. Cras ut sagittis elit. Phasellus fermentum pretium augue eu pulvinar. Nullam risus odio, congue quis fermentum sed, mollis ac orci. Maecenas elit felis, dictum et laoreet quis, lobortis ac nunc. Sed lorem mi, suscipit eget ullamcorper in, euismod vestibulum nisi. Maecenas condimentum congue tempor. Proin sed quam iaculis purus blandit feugiat. Suspendisse potenti. Phasellus fermentum odio nec tortor dictum in ullamcorper turpis egestas.
+			</p>
+			<p>
+			Nunc tortor sapien, ultricies id volutpat non, vestibulum id elit. Cras posuere lorem ut justo posuere mattis sed ac leo. Phasellus egestas fermentum mauris quis aliquam. Etiam lobortis luctus erat ut venenatis. Aliquam ac turpis dolor, sed elementum nunc. Fusce ut nulla libero. Mauris tincidunt lorem at lectus tempus eget porta ligula tempus. Nullam lobortis auctor magna sed vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin laoreet, ipsum sit amet aliquam aliquam, nisi enim placerat dui, quis auctor turpis sapien sed leo. Nunc commodo aliquam nibh, sit amet sagittis dolor tristique at. Phasellus sed sem urna, ut lacinia arcu. Pellentesque vel augue mi, sed condimentum risus. Nam eleifend pretium quam, quis suscipit nunc ultrices ac. Aliquam erat volutpat. Nullam id ipsum felis. Morbi non convallis turpis. Donec tortor dui, malesuada tempus vulputate varius, pulvinar sit amet metus.
+			</p>
+		</div>
+		<div id="box3" class="box">
+			;lkjaooiusdlkflqhe
+		</div>
+	</body>
+</html>
